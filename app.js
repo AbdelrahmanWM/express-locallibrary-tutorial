@@ -5,11 +5,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
-// const RateLimit = require("express-rate-limit");
-// const limiter = RateLimit({
-//   windowMs: 1* 60 *1000,
-//   max: 20,
-// });
+
+app.set('trust proxy', 1);
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1* 60 *1000,
+  max: 20,
+});
 require('dotenv').config();
 
 
@@ -48,7 +50,7 @@ app.use(
     },
   }),
 );
-// app.use(limiter);
+app.use(limiter);
 
 // Routers middleware setup
 app.use('/', indexRouter);
