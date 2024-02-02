@@ -1,0 +1,17 @@
+name: Glitch Project Sync
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name if needed
+
+jobs:
+  glitch-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Glitch Project Sync
+        uses: kanadgupta/glitch-sync@v3.0.1

@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
+
+app.set('trust proxy', 1);
 const RateLimit = require("express-rate-limit");
 const limiter = RateLimit({
   windowMs: 1* 60 *1000,
