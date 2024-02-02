@@ -8,6 +8,15 @@ const app = require('../app');
 const debug = require('debug')('express-locallibrary-tutorial:server');
 const http = require('http');
 
+const mongoose = require('mongoose');
+mongoose.set('strictQuery',false);
+
+const mongoDB = process.env.MONGODB_URL || process.env.dev_db_url;
+
+main().catch((err)=>console.log(err));
+async function main(){
+  await mongoose.connect(mongoDB,server.listen(port));
+}
 /**
  * Get port from environment and store in Express.
  */
@@ -25,7 +34,7 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+// server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
