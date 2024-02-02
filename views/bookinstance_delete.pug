@@ -1,0 +1,9 @@
+extends layout 
+block content 
+  h1 #{title}: #{bookinstance._id}
+  p #[strong Title:] #{bookinstance.book.title}
+  p #[strong Imprint:] #{bookinstance.imprint}
+  p 
+    strong Are you sure you want to delete this book copy?
+  form(method="POST")
+    button.btn.btn-primary(type='submit') Delete Book

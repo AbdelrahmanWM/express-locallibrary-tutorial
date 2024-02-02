@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #[em LocalLibrary], a very basic Express website 
+  | developed as a tutorial example on the Mozilla Developer Network.
+
+  h1 Statistics 
+  ul 
+    li #[strong Books:] !{book_count|0}
+    li #[strong Copies:] !{book_instance_count|0}
+    li #[strong Copies available:] !{book_instance_available_count|0}
+    li #[strong Authors:] !{author_count|0}
+    li #[strong Genres:] !{genre_count|0}

@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+  h1 #{title}: #{book.title} 
+  p #[strong Author: ]
+    a(href=book.author.url) #{book.author.name}
+  p #[strong Summary:]  #{book.summary}
+  p #[strong ISBN: ] #{book.isbn}
+  p #[strong Genre: ]
+    each val, index in book.genre
+      a(href=val.url) #{val.name}
+      if index <book.genre.length-1 
+        |, &nbsp;
+  if bookinstances_list.length
+    p #[strong Delete the following copies before attempting to delete this book. ]
+    div(style="margin-left:20px;margin-top:20px;")
+      each bookInstance in bookinstances_list
+        div 
+            h4 
+              a(href=bookInstance.url) #{bookInstance.id}
+            p Imprint: #{bookInstance.imprint}
+  else
+    p Are you sure you want to delete this book? 
+    form(method="POST")
+      button.btn.btn-primary(type='submit') Delete 
+
